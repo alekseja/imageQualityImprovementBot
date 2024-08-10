@@ -23,6 +23,7 @@ target/
 target/
 *.iml
 .idea/
+*.properties
 ```
 
 ### NetBeans ###
