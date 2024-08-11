@@ -7,10 +7,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SuperResolutionProcessor {
+
     public String process(String filePath) {
+        long startTime = System.nanoTime();
+
         // Применение суперразрешения
         Mat inputImage = opencv_imgcodecs.imread(filePath);
-
 
         // Проверка, удалось ли загрузить изображение
         if (inputImage.empty()) {
@@ -21,23 +23,21 @@ public class SuperResolutionProcessor {
         // Создание объекта DnnSuperResImpl для суперразрешения
         DnnSuperResImpl sr = new DnnSuperResImpl();
         String modelPath = "FSRCNN_x4.pb";
-//        String modelPath = "EDSR_x2.pb";
-
         sr.readModel(modelPath);
         sr.setModel("fsrcnn", 4); // Использование модели FSRCNN с масштабом 4
-//        sr.setModel("edsr", 2); // Использование модели FSRCNN с масштабом 4
 
         // Применение модели для увеличения разрешения изображения
         Mat outputImage = new Mat();
         sr.upsample(inputImage, outputImage);
 
         // Сохранение результата
-        String outputImagePath = "improved\\" + "upscaled_" + filePath.toString().replace("downloaded\\", "");
+        String outputImagePath = "upscaled_" + filePath.replace("downloaded\\", "");
         opencv_imgcodecs.imwrite(outputImagePath, outputImage);
 
+        long endTime = System.nanoTime();
+        long durationInMillis = (endTime - startTime) / 1_000_000;
+        System.out.println("Время обработки: " + durationInMillis + " мс");
+
         return outputImagePath;
-
-
     }
-
 }
