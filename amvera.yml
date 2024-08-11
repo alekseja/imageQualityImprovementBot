@@ -3,11 +3,13 @@ meta:
   toolchain:
     name: maven
     version: 17
+
 build:
   artifacts:
-    target/*.jar: /
-  args: 'spring-boot:repackage '
+    "target/*.jar": "/app/"
+
 run:
-  jarName: target/imageQualityImprovementBot-0.0.1-SNAPSHOT.jar
+  jarName: imageQualityImprovementBot-0.0.1-SNAPSHOT.jar  # Имя вашего jar файла, например, если jar файл называется `imageQualityImprovementBot-0.0.1-SNAPSHOT.jar`, укажите его здесь.
   persistenceMount: /data
-  containerPort: 80
+  containerPort: 8080
+  image: main
