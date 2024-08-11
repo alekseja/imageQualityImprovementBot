@@ -1,0 +1,15 @@
+meta:
+  environment: jvm
+  toolchain:
+    name: maven
+    version: 17
+
+build:
+  artifacts:
+    "target/*.jar": "/app/"
+
+run:
+  jarName: imageQualityImprovementBot-0.0.1-SNAPSHOT.jar  # Имя вашего jar файла, например, если jar файл называется `imageQualityImprovementBot-0.0.1-SNAPSHOT.jar`, укажите его здесь.
+  persistenceMount: /data
+  containerPort: 8080
+  image: main
