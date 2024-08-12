@@ -3,41 +3,71 @@ package ru.aoi15.imagequalityimprovementbot;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_dnn_superres.DnnSuperResImpl;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.concurrent.CompletableFuture;
+
+@Service
 public class SuperResolutionProcessor {
 
-    public String process(String filePath) {
-        long startTime = System.nanoTime();
+    private static final Logger logger = LoggerFactory.getLogger(SuperResolutionProcessor.class);
+    private static final int MAX_WIDTH = 4000;  // Максимальная ширина
+    private static final int MAX_HEIGHT = 4000; // Максимальная высота
+    private long lastProcessingTime;
 
-        // Применение суперразрешения
+    @Async
+    public CompletableFuture<String> process(String filePath) {
+        long startTime = System.nanoTime();
+        logger.info("Начата обработка изображения: {}", filePath);
+
         Mat inputImage = opencv_imgcodecs.imread(filePath);
 
-        // Проверка, удалось ли загрузить изображение
         if (inputImage.empty()) {
-            System.out.println("Не удалось загрузить изображение: " + filePath);
-            return filePath;
+            logger.error("Не удалось загрузить изображение: {}", filePath);
+            return CompletableFuture.completedFuture(filePath);
         }
 
-        // Создание объекта DnnSuperResImpl для суперразрешения
-        DnnSuperResImpl sr = new DnnSuperResImpl();
-        String modelPath = "FSRCNN_x4.pb";
-        sr.readModel(modelPath);
-        sr.setModel("fsrcnn", 4); // Использование модели FSRCNN с масштабом 4
+        if (isImageTooLarge(inputImage)) {
+            logger.warn("Ошибка: Изображение слишком большое. Максимально допустимый размер: {}x{} пикселей. Файл: {}",
+                    MAX_WIDTH, MAX_HEIGHT, filePath);
+            return CompletableFuture.completedFuture(null);
+        }
 
-        // Применение модели для увеличения разрешения изображения
-        Mat outputImage = new Mat();
-        sr.upsample(inputImage, outputImage);
+        try {
+            DnnSuperResImpl sr = new DnnSuperResImpl();
+            String modelPath = "FSRCNN-small_x2.pb";
+            sr.readModel(modelPath);
+            sr.setModel("fsrcnn", 2);
 
-        // Сохранение результата
-        String outputImagePath = "upscaled_" + filePath.replace("downloaded\\", "");
-        opencv_imgcodecs.imwrite(outputImagePath, outputImage);
+            Mat outputImage = new Mat();
+            sr.upsample(inputImage, outputImage);
 
-        long endTime = System.nanoTime();
-        long durationInMillis = (endTime - startTime) / 1_000_000;
-        System.out.println("Время обработки: " + durationInMillis + " мс");
+            String outputImagePath = "upscaled_" + filePath;
+            opencv_imgcodecs.imwrite(outputImagePath, outputImage);
 
-        return outputImagePath;
+            long endTime = System.nanoTime();
+            lastProcessingTime = (endTime - startTime) / 1_000_000;
+            logger.info("Обработка изображения завершена: {}. Время обработки: {} мс", outputImagePath, lastProcessingTime);
+
+            return CompletableFuture.completedFuture(outputImagePath);
+        } catch (Exception e) {
+            logger.error("Ошибка при обработке изображения: {}", filePath, e);
+            return CompletableFuture.completedFuture(null);
+        }
+    }
+
+    public long getLastProcessingTime() {
+        return lastProcessingTime;
+    }
+
+    private boolean isImageTooLarge(Mat image) {
+        boolean tooLarge = image.size().width() > MAX_WIDTH || image.size().height() > MAX_HEIGHT;
+        if (tooLarge) {
+            logger.debug("Изображение слишком большое: {}x{}", image.size().width(), image.size().height());
+        }
+        return tooLarge;
     }
 }
