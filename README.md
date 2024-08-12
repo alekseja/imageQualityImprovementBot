@@ -25,6 +25,7 @@
 2. Соберите и запустите приложение с помощью Docker:
 
 docker build -t image-quality-bot . <br>
-docker run -d -p 8080:80 image-quality-bot
-Лицензия
+docker run -d -p 8080:80 image-quality-bot <br>
+
+## Лицензия
 Этот проект лицензирован под лицензией MIT.
