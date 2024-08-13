@@ -20,16 +20,16 @@
 
 ## Установка
 
-1. Склонируйте репозиторий:
+1. Склонируйте репозиторий: <br>
    git clone https://github.com/ваш-аккаунт/imageQualityImprovementBot.git
-2.  Соберите проект с помощью Maven:
+2.  Соберите проект с помощью Maven:<br>
    mvn clean package -DskipTests
     
 ## Использование Docker
-1. Сборка Docker контейнера:
-docker build -t image-quality-bot .
-2. Запуск Docker контейнера:
-docker run -d -p 8080:80 image-quality-bot
+1. Сборка Docker контейнера:<br>
+docker build -t image-quality-bot .<br>
+2. Запуск Docker контейнера:<br>
+docker run -d -p 8080:80 image-quality-bot<br>
 
 ## Лицензия
 Этот проект лицензирован под лицензией MIT.
