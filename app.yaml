@@ -1,6 +1,0 @@
-runtime: java17
-entrypoint: java -jar imageQualityImprovementBot.jar
-
-handlers:
-  - url: /.*
-    script: this field is required, but ignored
