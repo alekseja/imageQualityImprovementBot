@@ -1,0 +1,156 @@
+[33mcommit 936cff6510605a0233492a9e8e010c8ee3c764ce[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: e0a6249 5a5ce74
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Tue Aug 13 04:02:08 2024 +0300
+
+    Merge branch 'fix-files'
+
+[33mcommit 5a5ce7455e593407788510693622894c4d88f474[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Tue Aug 13 03:48:30 2024 +0300
+
+    Initial commit
+
+M	Dockerfile
+
+[33mcommit 8f1b5c743fad4fe46a3b48bc14fbc2aca44705aa[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Tue Aug 13 02:23:03 2024 +0300
+
+    Bot v1.1
+
+D	.gcloudignore
+M	Dockerfile
+A	FSRCNN-small_x2.pb
+D	FSRCNN_x4.pb
+M	pom.xml
+A	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageProcessingTask.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplication.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageSuperResolutionBot.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/SuperResolutionProcessor.java
+M	src/main/resources/application.properties
+
+[33mcommit 7b912ff87483973097ca10e0041c21eaffcaa1c1[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 14:32:47 2024 +0300
+
+    Bot v1.1
+
+A	.gcloudignore
+A	.mvn/wrapper/MavenWrapperDownloader.java
+A	.mvn/wrapper/maven-wrapper.jar
+A	Dockerfile
+A	FSRCNN_x4.pb
+A	app.yaml
+
+[33mcommit 34bb2779338cd887528831a05df00c8a361bc529[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 14:32:28 2024 +0300
+
+    Bot v1.1
+
+M	.mvn/wrapper/maven-wrapper.properties
+M	mvnw
+M	mvnw.cmd
+M	pom.xml
+D	src/main/java/config/BotConfig.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplication.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageSuperResolutionBot.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/SuperResolutionProcessor.java
+M	src/main/resources/application.properties
+
+[33mcommit e0a6249f1c2823ff7d189dff0d74eee1f23d267d[m[33m ([m[1;31mamvera/master[m[33m, [m[1;31mamvera/main[m[33m)[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 09:16:21 2024 +0300
+
+    Revert "Bot v1.0"
+    
+    This reverts commit 398257fe789bacddefa10fe536fd8b58ecef83b6.
+
+M	amvera.yml
+
+[33mcommit 398257fe789bacddefa10fe536fd8b58ecef83b6[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 06:06:55 2024 +0300
+
+    Bot v1.0
+
+M	amvera.yml
+
+[33mcommit 8dea000884c20cb59d95df7ac2953216d4a8474f[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 05:53:20 2024 +0300
+
+    Bot v1.0
+
+A	amvera.yml
+
+[33mcommit 3a8a37290d6b8c90bb663e4775adc88b17e8b0eb[m
+Merge: ff32c80 fb73305
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 04:12:02 2024 +0300
+
+    Merge branch 'main' of https://github.com/alekseja/PhotoImprovingBot
+
+[33mcommit ff32c80e0911e40c0bb0b5c657a5168ee92f2526[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 02:26:53 2024 +0300
+
+    Bot v1.0
+
+A	FSRCNN_x4.pb
+A	README.md
+
+[33mcommit fb7330507d44d71f2f3c627227764660eecd54cb[m
+Author: Алексей Берко <34625299+alekseja@users.noreply.github.com>
+Date:   Sun Aug 11 03:47:45 2024 +0300
+
+    Initial commit
+
+A	README.md
+
+[33mcommit ef21ab8d47589a70e36fb38fb59dd87254e6c648[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sun Aug 11 02:25:52 2024 +0300
+
+    Bot v1.0
+
+M	pom.xml
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplication.java
+A	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageSuperResolutionBot.java
+A	src/main/java/ru/aoi15/imagequalityimprovementbot/SuperResolutionProcessor.java
+
+[33mcommit f8f449dc8158ab5570631bce42ac2a52b9ce1523[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sat Aug 10 20:38:46 2024 +0300
+
+    Added token
+
+M	.gitignore
+M	pom.xml
+A	src/main/java/config/BotConfig.java
+M	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplication.java
+M	src/main/resources/application.properties
+
+[33mcommit cea5aa6725e42c16576a6d351fb0248116890066[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sat Aug 10 20:13:31 2024 +0300
+
+    Added openCV
+
+M	.gitignore
+
+[33mcommit 89ea502542e634aa4a59b0756b745a7556530a99[m
+Author: Aleksey Berko <i@aberko.ru>
+Date:   Sat Aug 10 20:05:15 2024 +0300
+
+    start of project
+
+A	.gitignore
+A	.mvn/wrapper/maven-wrapper.properties
+A	mvnw
+A	mvnw.cmd
+A	pom.xml
+A	src/main/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplication.java
+A	src/main/resources/application.properties
+A	src/test/java/ru/aoi15/imagequalityimprovementbot/ImageQualityImprovementBotApplicationTests.java
