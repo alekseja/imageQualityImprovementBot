@@ -33,7 +33,7 @@ docker run -d -p 8080:80 image-quality-bot<br>
 
 ## Тестирование бота
 Вы можете протестировать работу бота в Telegram по следующей ссылке:<br>
-t.me/PhotoImprovingBot
+https://t.me/PhotoImprovingBot
 
 ## Лицензия
 Этот проект лицензирован под лицензией MIT.
